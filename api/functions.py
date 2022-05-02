@@ -5,7 +5,7 @@ def getBroadcast(ip):
   octeto2 = 0
   octeto3 = 0
   octeto4 = 0
-  #Seccion paar encontrar los string
+  #Seccion para encontrar los string
   #Octeto 1
   temp = ip
   primer_string = ip[0:ip.find('.')]
