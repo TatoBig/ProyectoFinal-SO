@@ -103,7 +103,7 @@ def getBroadcast(ip):
   y = 0
   if proteger < 1:
     binario_octeto_1 = ConvertirABinario(octeto1)
-    binario_octeto_2 = ConvertirABinario(octeto2)
+    print(binario_octeto_1)
     if residuo != 0:
       for i in range(len(binario_octeto_1)):
         nueva_mascara = nueva_mascara + str(binario_octeto_1[y])
@@ -120,7 +120,6 @@ def getBroadcast(ip):
     octeto2 = int(binario_de_1,2)
   elif proteger == 1:
     binario_octeto_2 = ConvertirABinario(octeto2)
-    binario_octeto_3 = ConvertirABinario(octeto2)
     if residuo != 0:
       for i in range(len(binario_octeto_2)):
         nueva_mascara = nueva_mascara + str(binario_octeto_2[y])
@@ -128,16 +127,14 @@ def getBroadcast(ip):
       x = residuo
       while(x < 8):
         nueva_mascara = nueva_mascara + "1" 
-        x = x + 1
-        
+        x = x + 1  
     else:
-      nueva_mascara = binario_octeto_2
+      nueva_mascara = binario_de_1
     octeto2 = int(nueva_mascara,2)
     octeto3 = int(binario_de_1,2)
     octeto4 = int(binario_de_1,2)
   elif proteger == 2:
     binario_octeto_3 = ConvertirABinario(octeto3)
-    binario_octeto_2 = ConvertirABinario(octeto2)
     if residuo != 0:
       for i in range(len(binario_octeto_3)):
         nueva_mascara = nueva_mascara + str(binario_octeto_3[y])
@@ -147,23 +144,25 @@ def getBroadcast(ip):
         nueva_mascara = nueva_mascara + "1" 
         x = x + 1   
     else:
-      nueva_mascara = binario_octeto_3
-    octeto3 = int(binario_octeto_3,2)
+      nueva_mascara = binario_de_1
+    octeto3 = int(nueva_mascara,2)
     octeto4 = int(binario_de_1,2)
   elif proteger == 3:
     binario_octeto_4 = ConvertirABinario(octeto4)
+    print(binario_octeto_4)
     binario_octeto_2 = ConvertirABinario(octeto2)
     if residuo != 0:
       for i in range(len(binario_octeto_4)):
         nueva_mascara = nueva_mascara + str(binario_octeto_4[y])
         y = y + 1
       x = residuo
+      
       while(x < 8):
         nueva_mascara = nueva_mascara + "1" 
         x = x + 1   
     else:
-      nueva_mascara = binario_octeto_4
-    octeto4 = int(binario_octeto_4,2)
+      nueva_mascara = binario_de_1
+    octeto4 = int(nueva_mascara,2)
   elif proteger == 4:
     result = str(octeto1) + "." + str(octeto2) + "." + str(octeto3) + "." + str(octeto4)
 
