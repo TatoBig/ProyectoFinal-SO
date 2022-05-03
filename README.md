@@ -1,3 +1,11 @@
+## Integrantes del grupo
+
+### Santiago José Navas Maldonado 		1551619
+### Paolo Giovanni Veliz Sulecio       	            1543219
+### Alison Carolina Ramos Carrera    		1510819
+### Jeffrey Reyes Vásquez 			1603719
+
+
 <p align="center"><img src="https://i.imgur.com/a9QWW0v.png"></p>
 
 ## Usage
