@@ -35,11 +35,12 @@ def Encontrar_red(mascara):
   result = []
   tamanio = 32 - mascara
   for i in range(32):
-    if (i < mascara):
+    if (i <= mascara):
       result.append(1)
-    elif (i >= mascara):
+    elif (i > mascara):
       result.append(0)
   return result
+  
 def Obtener_ip_en_binario(octeto1, octeto2, octeto3, octeto4):
   seccion1 = ConvertirABinario(octeto1)
   seccion2 = ConvertirABinario(octeto2)
@@ -94,14 +95,13 @@ def ConvertirABinario(numero):
   result = []
   nuevo_modulo = []
   modulos = []
-  while decimal != 0:
-    modulo = decimal % 2
-    cociente = decimal // 2
-    modulos.append(modulo)
-    decimal = cociente
-  tamanio = 8 - len(modulos)
+  binario = np.binary_repr(numero)
+  result = binario
+  tamanio = 8-len(binario)
   for i in range(tamanio):
     nuevo_modulo.append(0)
+  for ii in range(len(binario)):
+    modulos.append(int(binario[ii]))
   result = nuevo_modulo + modulos
   return result
 
