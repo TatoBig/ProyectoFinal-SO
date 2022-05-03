@@ -1,4 +1,20 @@
+import numpy as np
+
 #ESTE ARCHIVO CONTIENE LAS COSAS PARA PODER HACER FUNCIONAR LA APLICACION XD
+def ConvertirABinario(numero):
+  decimal = numero
+  result = []
+  nuevo_modulo = []
+  modulos = []
+  binario = np.binary_repr(numero)
+  result = binario
+  tamanio = 8-len(binario)
+  for i in range(tamanio):
+    nuevo_modulo.append(0)
+  for ii in range(len(binario)):
+    modulos.append(int(binario[ii]))
+  result = nuevo_modulo + modulos
+  return result
 def getGateway(ip):
   result = ""
   octeto1 = 0
@@ -35,9 +51,9 @@ def Encontrar_red(mascara):
   result = []
   tamanio = 32 - mascara
   for i in range(32):
-    if (i <= mascara):
+    if (i < mascara):
       result.append(1)
-    elif (i > mascara):
+    elif (i >= mascara):
       result.append(0)
   return result
   
@@ -88,21 +104,6 @@ def getBroadcast(ip):
   else:
     octeto4 = int(hs,2)
   result = str(octeto1) + "." + str(octeto2) + "." + str(octeto3) + "." + str(octeto4)
-  return result
-
-def ConvertirABinario(numero):
-  decimal = numero
-  result = []
-  nuevo_modulo = []
-  modulos = []
-  binario = np.binary_repr(numero)
-  result = binario
-  tamanio = 8-len(binario)
-  for i in range(tamanio):
-    nuevo_modulo.append(0)
-  for ii in range(len(binario)):
-    modulos.append(int(binario[ii]))
-  result = nuevo_modulo + modulos
   return result
 
 def PerteneceARed(ip_base,ip_comparacion):
