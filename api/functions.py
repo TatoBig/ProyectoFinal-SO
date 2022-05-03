@@ -67,13 +67,15 @@ def Obtener_ip_en_binario(octeto1, octeto2, octeto3, octeto4):
 
 print(Obtener_ip_en_binario(10,0,0,3))
 
+
 def getBroadcast(ip):
   result = ""
+  nueva_mascara = ""
   octeto1 = 0
   octeto2 = 0
   octeto3 = 0
   octeto4 = 0
-  #Seccion para encontrar los string
+  #Seccion paar encontrar los string
   #Octeto 1
   temp = ip
   primer_string = ip[0:ip.find('.')]
@@ -95,16 +97,81 @@ def getBroadcast(ip):
   quinto_string = temp
   mascara_de_red = int(quinto_string)
   #Aqui va para saber cuantas h van
-  cantidad_de_hs = 32-mascara_de_red
-  hs = ""
-  for i in range(cantidad_de_hs):
-    hs = hs + "1"
-  if hs == '':
-    octeto4 = 0
-  else:
-    octeto4 = int(hs,2)
+  binario_de_1 = "11111111"
+  proteger = int(mascara_de_red / 8)
+  residuo = mascara_de_red % 8
+  y = 0
+  if proteger < 1:
+    binario_octeto_1 = ConvertirABinario(octeto1)
+    binario_octeto_2 = ConvertirABinario(octeto2)
+    if residuo != 0:
+      for i in range(len(binario_octeto_1)):
+        nueva_mascara = nueva_mascara + str(binario_octeto_1[y])
+        y = y + 1
+      x = residuo
+      while(x < 8):
+        nueva_mascara = nueva_mascara + "1" 
+        x = x + 1   
+    else:
+      nueva_mascara = binario_octeto_1
+    octeto1 = int(nueva_mascara,2)
+    octeto2 = int(binario_de_1,2)
+    octeto3 = int(binario_de_1,2)
+    octeto2 = int(binario_de_1,2)
+  elif proteger == 1:
+    binario_octeto_2 = ConvertirABinario(octeto2)
+    binario_octeto_3 = ConvertirABinario(octeto2)
+    if residuo != 0:
+      for i in range(len(binario_octeto_2)):
+        nueva_mascara = nueva_mascara + str(binario_octeto_2[y])
+        y = y + 1
+      x = residuo
+      while(x < 8):
+        nueva_mascara = nueva_mascara + "1" 
+        x = x + 1
+        
+    else:
+      nueva_mascara = binario_octeto_2
+    octeto2 = int(nueva_mascara,2)
+    octeto3 = int(binario_de_1,2)
+    octeto4 = int(binario_de_1,2)
+  elif proteger == 2:
+    binario_octeto_3 = ConvertirABinario(octeto3)
+    binario_octeto_2 = ConvertirABinario(octeto2)
+    if residuo != 0:
+      for i in range(len(binario_octeto_3)):
+        nueva_mascara = nueva_mascara + str(binario_octeto_3[y])
+        y = y + 1
+      x = residuo
+      while(x < 8):
+        nueva_mascara = nueva_mascara + "1" 
+        x = x + 1   
+    else:
+      nueva_mascara = binario_octeto_3
+    octeto3 = int(binario_octeto_3,2)
+    octeto4 = int(binario_de_1,2)
+  elif proteger == 3:
+    binario_octeto_4 = ConvertirABinario(octeto4)
+    binario_octeto_2 = ConvertirABinario(octeto2)
+    if residuo != 0:
+      for i in range(len(binario_octeto_4)):
+        nueva_mascara = nueva_mascara + str(binario_octeto_4[y])
+        y = y + 1
+      x = residuo
+      while(x < 8):
+        nueva_mascara = nueva_mascara + "1" 
+        x = x + 1   
+    else:
+      nueva_mascara = binario_octeto_4
+    octeto4 = int(binario_octeto_4,2)
+  elif proteger == 4:
+    result = str(octeto1) + "." + str(octeto2) + "." + str(octeto3) + "." + str(octeto4)
+
   result = str(octeto1) + "." + str(octeto2) + "." + str(octeto3) + "." + str(octeto4)
   return result
+
+
+
 
 def PerteneceARed(ip_base,ip_comparacion):
   #Declaracion de las variables
